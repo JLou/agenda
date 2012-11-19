@@ -1,8 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "ui.h"
+#include "biblio.h"
 
 int main()
 {
     main_menu();
+
+    return 0;
 }
+

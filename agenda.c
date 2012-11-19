@@ -1,17 +1,19 @@
-t_agenda* create_agenda(int n)
-{
-    t_agenda* agenda;
+#include "agenda.h"
 
-    agenda = (t_agenda*) malloc(sizeof(t_agenda));
+struct agenda* create_agenda(int n)
+{
+    struct agenda* agenda;
+
+    agenda = (struct agenda*) malloc(sizeof(struct agenda));
 
     // pas cohérent
-    agenda->events = (struct rendez_vous**) malloc(n * sizeof(t_rdv*));
+    agenda->events = (struct rendez_vous**) malloc(n * sizeof(struct rendez_vous*));
     agenda->length = n;
     agenda->nb_elems = 0;
     return agenda;
 }
 
-void add_rdv(t_agenda* a, t_rdv* rdv)
+void add_rdv(struct agenda* a, struct rendez_vous* rdv)
 {
     //Overflow
     if(a->length <= a->nb_elems)

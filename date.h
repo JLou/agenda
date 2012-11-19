@@ -1,8 +1,9 @@
 #ifndef DATE_H_INCLUDED
 #define DATE_H_INCLUDED
 
-#include "rendez_vous.h"
-#include "agenda.h"
+#include "biblio.h"
+
+
 typedef struct time
 {
     int h;
@@ -15,5 +16,9 @@ typedef struct date
     int m;
     int y;
 } t_date;
+
+struct time* create_time(int, int);
+
+struct date* create_date(int, int, int);
 
 #endif // DATE_H_INCLUDED

@@ -1,20 +1,22 @@
-t_date* create_date(int d, int m, int y)
+#include "biblio.h"
+
+struct date* create_date(int d, int m, int y)
 {
-    t_date* d = (t_date*) malloc(sizeof(t_date));
+    struct date* date = (struct date*) malloc(sizeof(struct date));
 
-    d->d = d;
-    d->m = m;
-    d->y = y;
+    date->d = d;
+    date->m = m;
+    date->y = y;
 
-    return d;
+    return date;
 }
 
-t_time* create_time(int h, int m)
+struct time* create_time(int h, int m)
 {
-    t_time* t = (t_time*) malloc(sizeof(t_time));
+    struct time* time = (struct time*) malloc(sizeof(struct time));
 
-    t->h = h;
-    t->m = m;
+    time->h = h;
+    time->m = m;
 
-    return t;
+    return time;
 }
