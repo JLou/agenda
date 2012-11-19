@@ -33,35 +33,24 @@
 		</Compiler>
 		<Unit filename="agenda.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="agenda.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="agenda.h" />
+		<Unit filename="biblio.h" />
 		<Unit filename="date.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="date.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="date.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="rendez_vous.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="rendez_vous.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="rendez_vous.h" />
 		<Unit filename="ui.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="ui.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="ui.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
