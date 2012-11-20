@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include "agenda.h"
+#include <string.h>
 #include "date.h"
+#include "agenda.h"
 #include "rendez_vous.h"
 #include "ui.h"
 

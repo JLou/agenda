@@ -62,3 +62,40 @@
 	"agenda.h"
 	"biblio.h"
 
+1353440649 source:d:\projets\c\agenda\main.c
+	"biblio.h"
+
+1353440718 d:\projets\c\agenda\biblio.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"date.h"
+	"agenda.h"
+	"rendez_vous.h"
+	"ui.h"
+
+1353440793 d:\projets\c\agenda\agenda.h
+	"biblio.h"
+
+1353440623 d:\projets\c\agenda\date.h
+	"biblio.h"
+
+1353440774 d:\projets\c\agenda\rendez_vous.h
+	"biblio.h"
+
+1353436251 d:\projets\c\agenda\ui.h
+	"agenda.h"
+	"biblio.h"
+
+1353440811 source:d:\projets\c\agenda\rendez_vous.c
+	"biblio.h"
+
+1353440496 source:d:\projets\c\agenda\agenda.c
+	"biblio.h"
+
+1353440455 source:d:\projets\c\agenda\date.c
+	"biblio.h"
+
+1353440543 source:d:\projets\c\agenda\ui.c
+	"biblio.h"
+

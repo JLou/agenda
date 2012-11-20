@@ -4,18 +4,18 @@
 #include "biblio.h"
 
 
-typedef struct time
+struct time
 {
     int h;
     int m;
-} t_time;
+};
 
-typedef struct date
+struct date
 {
     int d;
     int m;
     int y;
-} t_date;
+};
 
 struct time* create_time(int, int);
 

@@ -3,13 +3,13 @@
 
 #include "biblio.h"
 
-typedef struct rendez_vous
+struct rendez_vous
 {
-    char *label;
+    char*        label;
     struct date* date;
     struct time* start;
     struct time* end;
-} t_rdv;
+};
 
 struct rendez_vous* create_rdv(char*, struct date*, struct time*, struct time*);
 

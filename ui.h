@@ -13,4 +13,6 @@ void add_event_menu(struct agenda*);
 
 char main_handle_input(struct agenda*);
 
+char search_handle_input(struct agenda*);
+
 #endif // UI_H_INCLUDED
