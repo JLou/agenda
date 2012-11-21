@@ -45,9 +45,8 @@ void show_event(int n, struct rendez_vous* rdv)
 
 void show_event_menu(struct agenda* agenda, int index)
 {
-    printf("\n\n\n INDEX #%d", index);
-
     char choix, loop;
+
     printf("%s\n", agenda->events[index]->label);
 
     printf("Le %d/%d/%d a %d:%d" , agenda->events[index]->date->d, agenda->events[index]->date->m,
@@ -121,6 +120,9 @@ void search_event_menu(struct agenda* agenda)
 
 }
 
+/**
+ * Display the search by label menu
+ */
 void search_by_label_menu(struct agenda* agenda)
 {
     char label[1000];
@@ -144,8 +146,12 @@ void search_by_label_menu(struct agenda* agenda)
     printf("\nSelect a event by his number\n");
     printf("or press <0> to return to main menu\n\n");
     scanf("%d", &choice);
+
+    //Back to main menu
     if(choice == 0)
         return;
+
+    //check needed
     show_event_menu(agenda, matches[choice-1]->index);
 
 }

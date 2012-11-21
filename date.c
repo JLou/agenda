@@ -23,5 +23,7 @@ struct time* create_time(int h, int m)
 
 int datecmp(struct date* a, struct date* b)
 {
+    //LOLILOL
+    //Stupid but does the job more or less
     return 365 * (a->y - b->y) + 30 * (a->m - b->m) + (a->d - b->d);
 }

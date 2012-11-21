@@ -21,4 +21,5 @@ struct time* create_time(int, int);
 
 struct date* create_date(int, int, int);
 
+int datecmp(struct date*, struct date*);
 #endif // DATE_H_INCLUDED

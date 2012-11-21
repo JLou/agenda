@@ -3,31 +3,31 @@
 	<stdio.h>
 	<stdlib.h>
 
-1353096641 source:d:\dev\c\agenda\main.c
+1353455826 source:d:\dev\c\agenda\main.c
 	"biblio.h"
 
-1353098726 d:\dev\c\agenda\ui.h
+1353455826 d:\dev\c\agenda\ui.h
 	"agenda.h"
 	"biblio.h"
 
-1353098447 d:\dev\c\agenda\agenda.h
-	"agenda.h"
-
-1353253711 d:\dev\c\agenda\rendez_vous.h
+1353455826 d:\dev\c\agenda\agenda.h
 	"biblio.h"
 
-1353253495 d:\dev\c\agenda\date.h
+1353455826 d:\dev\c\agenda\rendez_vous.h
+	"biblio.h"
+
+1353456304 d:\dev\c\agenda\date.h
 	"biblio.h"
 
 1353097668 source:d:\dev\c\agenda\agenda.h
 	"biblio.h"
 
-1353097620 d:\dev\c\agenda\biblio.h
+1353455826 d:\dev\c\agenda\biblio.h
 	<stdio.h>
 	<stdlib.h>
-	<time.h>
-	"agenda.h"
+	<string.h>
 	"date.h"
+	"agenda.h"
 	"rendez_vous.h"
 	"ui.h"
 
@@ -40,22 +40,22 @@
 	"rendez_vous.h"
 	"ui.h"
 
-1353098484 source:d:\dev\c\agenda\agenda.c
-	"agenda.h"
+1353456317 source:d:\dev\c\agenda\agenda.c
+	"biblio.h"
 
-1353253449 source:d:\dev\c\agenda\date.c
+1353455826 source:d:\dev\c\agenda\date.c
 	"biblio.h"
 
 1353096651 source:d:\dev\c\agenda\date.h
 	"biblio.h"
 
-1353253745 source:d:\dev\c\agenda\rendez_vous.c
+1353455826 source:d:\dev\c\agenda\rendez_vous.c
 	"biblio.h"
 
 1353096653 source:d:\dev\c\agenda\rendez_vous.h
 	"biblio.h"
 
-1353254411 source:d:\dev\c\agenda\ui.c
+1353455826 source:d:\dev\c\agenda\ui.c
 	"biblio.h"
 
 1353098400 source:d:\dev\c\agenda\ui.h

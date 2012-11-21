@@ -13,6 +13,9 @@ struct agenda* create_agenda(int n)
     return agenda;
 }
 
+ /**
+  * Add rendez_vous to the agenda
+  */
 void add_rdv(struct agenda* a, struct rendez_vous* rdv)
 {
     //Overflow
@@ -44,6 +47,8 @@ struct match* create_match(struct rendez_vous* rdv, int index)
     struct match* m = (struct match*) malloc(sizeof(struct match));
     m->rdv = rdv;
     m->index = index;
+
+    return m;
 }
 
 struct match** search_by_label(struct agenda* agenda, char* label)
@@ -59,6 +64,7 @@ struct match** search_by_label(struct agenda* agenda, char* label)
             j++;
         }
     }
+    //Set null to last element if matches arent full
     if(j != i)
     {
         matches[j] = 0;
@@ -80,6 +86,7 @@ struct match** search_by_date(struct agenda* agenda, struct date* date)
             j++;
         }
     }
+    //Set null to last element if matches arent full
     if(j != i)
     {
         matches[j] = 0;
