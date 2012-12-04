@@ -13,7 +13,7 @@ void main_menu()
         printf("2. Add an event\n");
         printf("3. Search an event\n");
         printf("4. Quit this awesomium software\n");
-        loop = main_handle_input(agenda);
+        loop = main_handle_input(&agenda);
     } while (loop == 0);
 }
 
@@ -234,7 +234,7 @@ char search_handle_input(struct agenda* agenda)
 }
 
 
-char main_handle_input(struct agenda* agenda)
+char main_handle_input(struct agenda** agenda)
 {
     char choix, quit = 0;
     char keeplooping = 1;
@@ -245,16 +245,28 @@ char main_handle_input(struct agenda* agenda)
         switch(choix)
         {
         case '1':
-            show_events(agenda);
+            show_events(*agenda);
             break;
         case '2':
-            add_event_menu(agenda);
+            add_event_menu(*agenda);
             break;
         case '3':
-            search_event_menu(agenda);
+            search_event_menu(*agenda);
             break;
         case '4':
             quit = 1;
+            break;
+        case '5':
+            printf("Saving\n");
+            save_agenda("test.txt", *agenda);
+            printf("Saved !\n");
+            break;
+        case '6':
+            printf("Loading\n");
+            *agenda = load_agenda("test.txt");
+            printf("Loaded !\n");
+
+            show_events(*agenda);
             break;
         default:
             keeplooping = 1;

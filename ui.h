@@ -11,7 +11,7 @@ void show_event(int, struct rendez_vous*);
 
 void add_event_menu(struct agenda*);
 
-char main_handle_input(struct agenda*);
+char main_handle_input(struct agenda**);
 
 char search_handle_input(struct agenda*);
 
