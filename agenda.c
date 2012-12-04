@@ -1,15 +1,12 @@
 #include "biblio.h"
 
-struct agenda* create_agenda(int n)
+struct agenda* create_agenda()
 {
     struct agenda* agenda;
 
     agenda = (struct agenda*) malloc(sizeof(struct agenda));
 
-    // pas cohérent
-    agenda->events = (struct rendez_vous**) malloc(n * sizeof(struct rendez_vous*));
-    agenda->length = n;
-    agenda->nb_elems = 0;
+    agenda->events = create_linked_list();
     return agenda;
 }
 
@@ -18,80 +15,65 @@ struct agenda* create_agenda(int n)
   */
 void add_rdv(struct agenda* a, struct rendez_vous* rdv)
 {
-    //Overflow
-    if(a->length <= a->nb_elems)
+    struct linked_list* e;
+
+    e = create_list_element(rdv);
+    list_add(a->events, e);
+}
+
+void del_rdv(struct agenda* a, struct linked_list* e)
+{
+    struct linked_list *pt, *prev;
+    pt = a->events;
+    while(pt->next != NULL)
     {
-        printf("La capacité maximale est atteinte");
-        return;
-    }
-    a->events[a->nb_elems] = rdv;
-    a->nb_elems++;
-}
+        prev = pt;
+        pt = pt->next;
 
-void del_rdv(struct agenda* a, int index)
-{
-    struct rendez_vous* tmp = a->events[index];
-
-    a->events[index] = a->events[a->nb_elems-1];
-    a->events[a->nb_elems-1] = tmp;
-    free(tmp->date);
-    free(tmp->end);
-    free(tmp->start);
-    free(tmp);
-    a->events[a->nb_elems-1] = 0;
-    a->nb_elems--;
-}
-
-struct match* create_match(struct rendez_vous* rdv, int index)
-{
-    struct match* m = (struct match*) malloc(sizeof(struct match));
-    m->rdv = rdv;
-    m->index = index;
-
-    return m;
-}
-
-struct match** search_by_label(struct agenda* agenda, char* label)
-{
-    int i, j;
-    j = 0;
-    struct match** matches = (struct match**) malloc(agenda->nb_elems * sizeof(struct match*));
-    for(i=0; i<agenda->nb_elems; i++)
-    {
-        if(strcmp(agenda->events[i]->label, label) == 0)
+        if(pt->data == e->data)
         {
-            matches[j] = create_match(agenda->events[i], i);
-            j++;
+            prev->next = pt->next;
+            free(((struct rendez_vous*)pt->data)->start);
+            free(((struct rendez_vous*)pt->data)->end);
+            free(((struct rendez_vous*)pt->data)->date);
+            free(((struct rendez_vous*)pt->data)->label);
+            free(pt->data);
+            free(pt);
         }
     }
-    //Set null to last element if matches arent full
-    if(j != i)
-    {
-        matches[j] = 0;
-    }
+}
 
+struct linked_list* search_by_label(struct agenda* agenda, char* label)
+{
+    struct linked_list *pt, *matches;
+
+    matches = create_linked_list();
+    pt = agenda->events;
+    while (pt->next != 0)
+    {
+        pt = pt->next;
+        if(strcmp(((struct rendez_vous*)pt->data)->label, label) == 0)
+        {
+            list_add(matches, create_list_element(pt->data));
+        }
+
+    }
     return matches;
 }
 
-struct match** search_by_date(struct agenda* agenda, struct date* date)
+struct linked_list* search_by_date(struct agenda* agenda, struct date* date)
 {
-    int i, j;
-    j = 0;
-    struct match** matches = (struct match**) malloc(agenda->nb_elems * sizeof(struct match*));
-    for(i=0; i<agenda->nb_elems; i++)
-    {
-        if(datecmp(agenda->events[i]->date, date) == 0)
-        {
-            matches[j] = create_match(agenda->events[i], i);
-            j++;
-        }
-    }
-    //Set null to last element if matches arent full
-    if(j != i)
-    {
-        matches[j] = 0;
-    }
+    struct linked_list *pt, *matches;
 
+    matches = create_linked_list();
+
+    while (pt != NULL)
+    {
+        if(datecmp(((struct rendez_vous*)pt->data)->date, date) == 0)
+        {
+            list_add(matches, create_list_element(pt->data));
+        }
+        pt = pt->next;
+    }
     return matches;
 }
-

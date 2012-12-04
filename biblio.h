@@ -5,9 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "date.h"
-#include "agenda.h"
 #include "rendez_vous.h"
+#include "agenda.h"
 #include "ui.h"
+#include "linked_list.h"
 
 
 #endif // BIBLIO_H_INCLUDED

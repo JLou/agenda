@@ -5,11 +5,7 @@ void main_menu()
     int n; char loop;
     struct agenda* agenda;
     printf("Welcome to the new cOS calendar APP\n");
-    printf("First you need to set the maximum of event the calendar can handle\n");
-    scanf("%d", &n);
-
     agenda = create_agenda(n);
-
 
     do
     {
@@ -23,13 +19,21 @@ void main_menu()
 
 void show_events(struct agenda* agenda)
 {
+    int i = 0;
+    struct linked_list* pt = agenda->events;
+
     printf("\n\n\n");
-    int i;
-    if(agenda->nb_elems == 0)
+
+    if(pt->next == 0)
         printf("No event found");
-    for(i=0; i < agenda->nb_elems; i++)
+
+
+    while(pt->next != 0)
     {
-        show_event(i+1, agenda->events[i]);
+        pt = pt->next;
+        i++;
+        show_event(i, pt->data);
+
     }
 }
 
@@ -43,16 +47,16 @@ void show_event(int n, struct rendez_vous* rdv)
     printf(" jusqu'a %d:%d\n", rdv->end->h, rdv->end->m);
 }
 
-void show_event_menu(struct agenda* agenda, int index)
+void show_event_menu(struct agenda* a, struct linked_list* e)
 {
     char choix, loop;
+    struct rendez_vous* rdv = (struct rendez_vous*) e->data;
+    printf("%s\n", rdv->label);
 
-    printf("%s\n", agenda->events[index]->label);
+    printf("Le %d/%d/%d a %d:%d" , rdv->date->d, rdv->date->m,
+           rdv->date->y, rdv->start->h, rdv->start->m);
 
-    printf("Le %d/%d/%d a %d:%d" , agenda->events[index]->date->d, agenda->events[index]->date->m,
-           agenda->events[index]->date->y, agenda->events[index]->start->h, agenda->events[index]->start->m);
-
-    printf(" jusqu'a %d:%d\n", agenda->events[index]->end->h, agenda->events[index]->end->m);
+    printf(" jusqu'a %d:%d\n", rdv->end->h, rdv->end->m);
 
     do
     {
@@ -64,7 +68,7 @@ void show_event_menu(struct agenda* agenda, int index)
         switch(choix)
         {
             case '1':
-                del_rdv(agenda, index);
+                del_rdv(a, e);
                 break;
             case '2':
                 break;
@@ -127,6 +131,8 @@ void search_by_label_menu(struct agenda* agenda)
 {
     char label[1000];
     int i, choice;
+    struct linked_list* e;
+
 
     printf("Label a rechercher ? ");
     fflush(stdin);
@@ -134,13 +140,15 @@ void search_by_label_menu(struct agenda* agenda)
     gets(label);
     printf("\n\n");
 
-    struct match** matches = search_by_label(agenda, label);
-    for(i=0; i<agenda->nb_elems; i++)
+    struct linked_list* matches = search_by_label(agenda, label);
+    i=0;
+    e = matches;
+    while (e->next != 0)
     {
-        if(matches[i] == 0)
-            break;
+        e = e->next;
+        i++;
 
-        show_event(i+1, matches[i]->rdv);
+        show_event(i, e->data);
     }
 
     printf("\nSelect a event by his number\n");
@@ -151,15 +159,17 @@ void search_by_label_menu(struct agenda* agenda)
     if(choice == 0)
         return;
 
-    //check needed
-    show_event_menu(agenda, matches[choice-1]->index);
+    e = matches;
+    for(i=0; i<choice;i++)
+        e = e->next;
+    show_event_menu(agenda, e);
 
 }
 
 void search_by_date_menu(struct agenda* agenda)
 {
     int d, m, y, i, choice;
-
+    struct linked_list* e;
     struct date *date;
 
     printf("Date to search (dd/mm/yyyy) ? ");
@@ -169,20 +179,28 @@ void search_by_date_menu(struct agenda* agenda)
 
     printf("\n\n");
     struct match** matches = search_by_date(agenda, date);
-    for(i=0; i<agenda->nb_elems; i++)
+    i=0;
+    e = matches;
+    while (e != 0)
     {
-        if(matches[i] == 0)
-            break;
+        e = e->next;
+        i++;
 
-        show_event(i+1, matches[i]->rdv);
+        show_event(i, e->data);
     }
 
     printf("\nSelect a event by his number\n");
     printf("or press <0> to return to main menu\n\n");
     scanf("%d", &choice);
+
+    //Back to main menu
     if(choice == 0)
         return;
-    show_event_menu(agenda, matches[choice-1]->index);
+
+    e = matches;
+    for(i=0; i<choice;i++)
+        e = e->next;
+    show_event_menu(agenda, e);
 }
 
 char search_handle_input(struct agenda* agenda)

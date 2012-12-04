@@ -19,7 +19,7 @@ struct date
 
 struct time* create_time(int, int);
 
-struct date* create_date(int, int, int);
+struct date* create_date(int d, int m, int y);
 
 int datecmp(struct date*, struct date*);
 #endif // DATE_H_INCLUDED

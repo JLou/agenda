@@ -5,25 +5,18 @@
 
 struct agenda
 {
-    struct rendez_vous **events; //MESUPERBUSY
-    int nb_elems;
-    int length;
+    struct linked_list *events; //MESUPERBUSY
 };
 
-struct match
-{
-    struct rendez_vous* rdv;
-    int index;
-};
-struct agenda* create_agenda(int);
+struct agenda* create_agenda();
 
 void add_rdv(struct agenda*, struct rendez_vous*);
 
-void del_rdv(struct agenda*, int);
+void del_rdv(struct agenda*, struct linked_list*);
 
-struct match** search_by_label(struct agenda*, char*);
+struct linked_list* search_by_label(struct agenda*, char*);
 
-struct match** search_by_date(struct agenda*, struct date*);
+struct linked_list* search_by_date(struct agenda*, struct date*);
 
 
 #endif // AGENDA_H_INCLUDED
